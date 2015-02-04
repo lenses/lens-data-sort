@@ -14,9 +14,8 @@ A Thelma component providing solution to no problem in particular.
 @homepage http://thelmanews.github.io/th-data-sort
 -->
 
-<polymer-element name="th-data-sort" attributes="input output">
+<polymer-element name="th-data-sort" attributes="input output sortColumn sortType">
   <template>
-    <core-style ref="theme"></core-style>
     <link rel="stylesheet" href="th-data-sort.css">
 
     <template if="{{!included}}">
@@ -33,7 +32,7 @@ A Thelma component providing solution to no problem in particular.
               </template>
             </core-selector>
             <label for="sort_selector">Sort order:</label>
-            <core-selector id="func_selector" id="" selected="{{selectedSort}}" valueattr="label">
+            <core-selector id="func_selector" id="" selected="{{sortType}}" valueattr="label">
                 <div class="col" label="asc">Ascending</div>
                 <div class="col" label="desc">Descending</div>
             </core-selector>
@@ -44,7 +43,7 @@ A Thelma component providing solution to no problem in particular.
 
   <script>
     Polymer({
-      selectedSort: 'asc',
+      sortType: 'asc',
       ready: function () {
         //open the collapse if it the component is included
         if(this.included && !this.$.ctrl_collapse.opened) {
@@ -77,7 +76,7 @@ A Thelma component providing solution to no problem in particular.
         if(self.sortColumn)
         {
             self.output = _.sortBy(self.input, self.sortColumn);
-            if(self.selectedSort==='desc') {
+            if(self.sortType==='desc') {
               self.output.reverse();
             }
 
@@ -91,7 +90,7 @@ A Thelma component providing solution to no problem in particular.
         self._calculateOutput();
 
       },
-      selectedSortChanged: function(e) {
+      sortTypeChanged: function(e) {
         
         var self= this;
         self._calculateOutput();
