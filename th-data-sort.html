@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html"> 
-<link rel="import" href="../th-theme/th-theme.html"> 
+<link rel="import" href="../core-collapse/core-collapse.html">
+<link rel="import" href="../core-selector/core-selector.html">
+<link rel="import" href="../core-icon-button/core-icon-button.html">
 
 <!--
 A Thelma component providing solution to no problem in particular.
@@ -17,25 +19,28 @@ A Thelma component providing solution to no problem in particular.
 <polymer-element name="th-data-sort" attributes="input output sortColumn sortType">
   <template>
     <link rel="stylesheet" href="th-data-sort.css">
+    <div class="th-container">
 
-    <template if="{{!included}}">
-      <core-icon-button icon="perm-data-setting" on-click="{{showControls}}"></core-icon-button>
-    </template>
+      <template if="{{!included}}">
+        <core-icon-button icon="perm-data-setting" on-click="{{showControls}}"></core-icon-button>
+      </template>
 
-    <core-collapse id="ctrl_collapse">      
+      <core-collapse id="ctrl_collapse">      
 
-            <p class="info">Sort rows.</p>
-            <label for="func_selector">Sort by column:</label>
-            <core-selector id="value_selector" selected="{{sortColumn}}" valueattr="label">
-              <template repeat="{{attr in _dataAttributes}}">
-                <div class="col" label="{{attr}}">{{attr}}</div>
-              </template>
-            </core-selector>
-            <label for="sort_selector">Sort order:</label>
-            <core-selector id="func_selector" id="" selected="{{sortType}}" valueattr="label">
-                <div class="col" label="asc">Ascending</div>
-                <div class="col" label="desc">Descending</div>
-            </core-selector>
+              <p class="info">Sort rows.</p>
+              <label for="func_selector">Sort by column:</label>
+              <core-selector id="value_selector" selected="{{sortColumn}}" valueattr="label">
+                <template repeat="{{attr in _dataAttributes}}">
+                  <div class="col" label="{{attr}}">{{attr}}</div>
+                </template>
+              </core-selector>
+              <label for="sort_selector">Sort order:</label>
+              <core-selector id="func_selector" id="" selected="{{sortType}}" valueattr="label">
+                  <div class="col" label="asc">Ascending</div>
+                  <div class="col" label="desc">Descending</div>
+              </core-selector>
+      </core-collapse>
+    </div>
 
   </template>
 
