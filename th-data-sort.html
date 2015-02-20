@@ -2,6 +2,7 @@
 <link rel="import" href="../core-collapse/core-collapse.html">
 <link rel="import" href="../core-selector/core-selector.html">
 <link rel="import" href="../core-icon-button/core-icon-button.html">
+<link rel="import" href="../th-data-utility/th-data-utility.html">
 
 <!--
 A Thelma component providing solution to no problem in particular.
@@ -19,6 +20,8 @@ A Thelma component providing solution to no problem in particular.
 <polymer-element name="th-data-sort" attributes="input output sortColumn sortType">
   <template>
     <link rel="stylesheet" href="th-data-sort.css">
+
+    <th-data-utility id="data_utility"></th-data-utility>
     <div class="th-container">
 
       <template if="{{!included}}">
@@ -80,7 +83,17 @@ A Thelma component providing solution to no problem in particular.
         var self = this;
         if(self.sortColumn)
         {
-            self.output = _.sortBy(self.input, self.sortColumn);
+            self.output = _.sortBy(self.input, function(item) {
+              var value = item[self.sortColumn];
+              var isDate = self.$.data_utility.parseDate(value);
+              if(isDate) {
+                return isDate;
+              }
+              var numeric = self.$.data_utility.unformatStringIfNumeric(value);
+              return numeric;
+
+              
+            });
             if(self.sortType==='desc') {
               self.output.reverse();
             }
