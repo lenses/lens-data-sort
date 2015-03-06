@@ -51,13 +51,46 @@ A Thelma component providing solution to no problem in particular.
 
   <script>
     Polymer({
+
+      /**
+       *  Input data
+       *
+       *  @property input
+       *  @type object
+       *  @default undefined
+       */
+
+      /**
+       *  Output data
+       *
+       *  @property output
+       *  @type object
+       *  @default undefined
+       */
+
+      /**
+       *  sortType is either 'asc' (ascending) or 'desc' (descending).
+       *
+       *  @property sortType
+       *  @type String
+       *  @default 'asc'
+       */
       sortType: 'asc',
+
+      /**
+       *  sortColumn is the name of the column that will be used to sort the array of data.
+       *
+       *  @property sortColumn
+       *  @type String
+       */
+
       ready: function () {
         //open the collapse if it the component is included
         if(this.included && !this.$.ctrl_collapse.opened) {
           this.$.ctrl_collapse.toggle();
         }
       },
+
       inputChanged: function() {
 
           var self = this;
@@ -74,7 +107,7 @@ A Thelma component providing solution to no problem in particular.
             self._dataAttributes = attributes;
           }
 
-          self._calculateOutput();          
+          self._calculateOutput();
 
       }, 
 
@@ -100,7 +133,11 @@ A Thelma component providing solution to no problem in particular.
 
         }
 
-      },     
+      },
+
+      outputChanged: function() {
+        this.fire('th-output-changed', this);
+      },
 
       sortColumnChanged: function(e) {
         
