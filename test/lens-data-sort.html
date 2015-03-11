@@ -1,21 +1,21 @@
 <!doctype html>
 <html>
 <head>
-  <title>th-data-sort</title>
+  <title>lens-data-sort</title>
 
   <script src='../../webcomponentsjs/webcomponents.js'></script>
   <script src='../../web-component-tester/browser.js'></script>
 
-  <link rel='import' href='../th-data-sort.html'>
+  <link rel='import' href='../lens-data-sort.html'>
 
 </head>
 <body>
 
-  <th-data-sort id='data-sort'></th-data-sort>
+  <lens-data-sort id='data-sort'></lens-data-sort>
 
   <script>
     var should = chai.should();
-    var component = document.querySelector('th-data-sort');
+    var component = document.querySelector('lens-data-sort');
 
     // the event listener callback will be added / removed in every async test
     var callback = function(){};
@@ -31,7 +31,7 @@
       ]);
 
     // testing suite
-    suite('<th-data-sort>', function() {
+    suite('<lens-data-sort>', function() {
 
       test('component can be created and exist', function(done) {
         should.exist(component);
