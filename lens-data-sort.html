@@ -2,27 +2,27 @@
 <link rel="import" href="../core-collapse/core-collapse.html">
 <link rel="import" href="../core-selector/core-selector.html">
 <link rel="import" href="../core-icon-button/core-icon-button.html">
-<link rel="import" href="../th-data-utility/th-data-utility.html">
+<link rel="import" href="../lens-u-data-utility/lens-u-data-utility.html">
 
 <!--
 A Thelma component for sorting data by a column's values. Can sort both text and numbers in ascending or descending order.
 
 ##### Example
 
-    <th-data-sort></th-data-sort>
+    <lens-data-sort></lens-data-sort>
 
-@element th-data-sort
+@element lens-data-sort
 @blurb Sort data by the values of a column.
 @status alpha
-@homepage http://thelmanews.github.io/th-data-sort
+@homepage http://thelmanews.github.io/lens-data-sort
 -->
 
-<polymer-element name="th-data-sort" attributes="input output sortColumn sortType">
+<polymer-element name="lens-data-sort" attributes="input output sortColumn sortType">
   <template>
-    <link rel="stylesheet" href="th-data-sort.css">
+    <link rel="stylesheet" href="lens-data-sort.css">
 
-    <th-data-utility id="data_utility"></th-data-utility>
-    <div class="th-container">
+    <lens-u-data-utility id="data_utility"></lens-u-data-utility>
+    <div class="lens-container">
 
       <template if="{{!included}}">
         <core-icon-button icon="perm-data-setting" on-click="{{showControls}}"></core-icon-button>
