@@ -14,7 +14,7 @@ A Thelma component for sorting data by a column's values. Can sort both text and
 @element lens-data-sort
 @blurb Sort data by the values of a column.
 @status alpha
-@homepage http://thelmanews.github.io/lens-data-sort
+@homepage http://lenses.github.io/lens-data-sort
 -->
 
 <polymer-element name="lens-data-sort" attributes="input output sortColumn sortType">
@@ -133,10 +133,6 @@ A Thelma component for sorting data by a column's values. Can sort both text and
 
         }
 
-      },
-
-      outputChanged: function() {
-        this.fire('th-output-changed', this);
       },
 
       sortColumnChanged: function(e) {
