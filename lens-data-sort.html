@@ -1,7 +1,5 @@
 <link rel="import" href="../polymer/polymer.html"> 
-<link rel="import" href="../core-collapse/core-collapse.html">
 <link rel="import" href="../core-selector/core-selector.html">
-<link rel="import" href="../core-icon-button/core-icon-button.html">
 <link rel="import" href="../lens-u-data-utility/lens-u-data-utility.html">
 
 <!--
@@ -14,7 +12,7 @@ A Thelma component for sorting data by a column's values. Can sort both text and
 @element lens-data-sort
 @blurb Sort data by the values of a column.
 @status alpha
-@homepage http://thelmanews.github.io/lens-data-sort
+@homepage http://lenses.github.io/lens-data-sort
 -->
 
 <polymer-element name="lens-data-sort" attributes="input output sortColumn sortType">
@@ -22,27 +20,20 @@ A Thelma component for sorting data by a column's values. Can sort both text and
     <link rel="stylesheet" href="lens-data-sort.css">
 
     <lens-u-data-utility id="data_utility"></lens-u-data-utility>
-    <div class="lens-container">
 
-      <template if="{{!included}}">
-        <core-icon-button icon="perm-data-setting" on-click="{{showControls}}"></core-icon-button>
-      </template>
-
-      <core-collapse id="ctrl_collapse">      
-
-              <p class="info">Sort rows.</p>
-              <label for="func_selector">Sort by column:</label>
-              <core-selector id="value_selector" selected="{{sortColumn}}" valueattr="label">
-                <template repeat="{{attr in _dataAttributes}}">
-                  <div class="col" label="{{attr}}">{{attr}}</div>
-                </template>
-              </core-selector>
-              <label for="sort_selector">Sort order:</label>
-              <core-selector id="func_selector" id="" selected="{{sortType}}" valueattr="label">
-                  <div class="col" label="asc">Ascending</div>
-                  <div class="col" label="desc">Descending</div>
-              </core-selector>
-      </core-collapse>
+    <div class="lens-container lens-data">
+        <p class="info">Sort rows.</p>
+        <label for="func_selector">Sort by column:</label>
+        <core-selector id="value_selector" selected="{{sortColumn}}" valueattr="label">
+          <template repeat="{{attr in _dataAttributes}}">
+            <div class="col" label="{{attr}}">{{attr}}</div>
+          </template>
+        </core-selector>
+        <label for="sort_selector">Sort order:</label>
+        <core-selector id="func_selector" id="" selected="{{sortType}}" valueattr="label">
+            <div class="col" label="asc">Ascending</div>
+            <div class="col" label="desc">Descending</div>
+        </core-selector>
     </div>
 
   </template>
@@ -135,10 +126,6 @@ A Thelma component for sorting data by a column's values. Can sort both text and
 
       },
 
-      outputChanged: function() {
-        this.fire('th-output-changed', this);
-      },
-
       sortColumnChanged: function(e) {
         
         var self= this;
@@ -149,10 +136,6 @@ A Thelma component for sorting data by a column's values. Can sort both text and
         
         var self= this;
         self._calculateOutput();
-
-      },
-      showControls: function(e) {
-        this.$.ctrl_collapse.toggle();
       },
 
     });
