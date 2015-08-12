@@ -12,6 +12,29 @@
         font-size: 14px;
       }
 
+      .logo {
+        background: url('https://avatars3.githubusercontent.com/u/8629151?v=3&s=50') 0 0 no-repeat;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        float: left;
+        margin-left: 5px;
+        margin-right: 15px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      a, a:visited {
+        color: #333;
+      }
+
+      h1 {
+        font-size: 18px;
+        font-family: monaco;
+      }
+      
       pre {
         border: 1px solid #EEE;
         font-size: 12px;
@@ -53,21 +76,22 @@
 
     </style>
 
-    <script>
-      // helper function to stringify objects, used below like {{outputs | json}}
-      PolymerExpressions.prototype.json = function(object) {
-        return JSON.stringify(object, undefined, 2);
-      };
-    </script>
-
   </head>
-  <body unresolved>
+  <body unresolved="">
+    
+    <div class="logo">
+    </div> 
+    <h1>lens-data-zip</h1>
+    <p>
+      A '<a href="http://lenses.github.io/lenses-freeform/components/lenses-freeform/" target="_blank">lenses</a>'' component for zipping two datasets (like sql join). Source on <a href="https://github.com/lenses/lens-data-zip" target="_blank">Github</a>
+    </p>
 
-    <template id="auto-bind-demo" is="auto-binding">
+    <template id="auto-bind-demo" is="dom-bind">
+
 
       <section>
         <label>Input:</label>
-        <pre id="input">{{myinput | json}}</pre>
+        <pre id="input"></pre>
       </section>
       <section class="component">
         <label>Component:</label>
@@ -75,7 +99,7 @@
       </section>
       <section>
         <label>Output:</label>
-        <pre>{{myoutput | json}}</pre>
+        <pre></pre>
       </section>
       
       <script>
@@ -90,11 +114,21 @@
           {"index":6, "text":"Alaska","dollar":"$145,900","text_number":"Q3 2012","percent":"3.3%","date":"10-30-1915","date_unformat":"4/4/2015","billion":"9B"}
           ]);
 
+        var preInput = document.getElementById('input');
+        var preOutput = document.getElementById('output');
+
+
         //set the input
         component.input = input;
+        preInput.textContent = JSON.stringify(input, undefined, 2);
 
-        //set the split column to be the first element in the input
-        component.splitCol = Object.keys(input[0])[0];
+        // update output
+        document.addEventListener('lens-output-changed', function(val) {
+          preOutput.textContent = JSON.stringify(val.detail, undefined, 2);
+        });
+
+        //set the sort column to be the second element in the input
+        component.sortCol = Object.keys(input[0])[1];
 
       </script>
     </template>
