@@ -101,6 +101,7 @@ A Thelma component for sorting data by a column's values. Can sort both text and
         if (self.sortType === 'desc') {
           self.output.reverse();
         }
+        self.fire('lens-output-changed', self.output);
       }
     },
     sortColumnChanged: function (_, e) {

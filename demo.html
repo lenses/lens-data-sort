@@ -99,7 +99,7 @@
       </section>
       <section>
         <label>Output:</label>
-        <pre></pre>
+        <pre id="output"></pre>
       </section>
       
       <script>
@@ -127,8 +127,9 @@
           preOutput.textContent = JSON.stringify(val.detail, undefined, 2);
         });
 
+        
         //set the sort column to be the second element in the input
-        component.sortCol = Object.keys(input[0])[1];
+        component.sortColumn = Object.keys(input[0])[1];
 
       </script>
     </template>
