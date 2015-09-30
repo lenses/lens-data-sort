@@ -10,7 +10,7 @@
     "lodash": "lodash/lodash#~3.7.0"
   },
   "dev-dependencies":  { 
-    "iron-component-page": "PolymerElements/iron-component-page#~0.5.5"
+    "iron-component-page": "PolymerElements/iron-component-page#~0.5.5",
     "web-component-tester": "*"
   }
 }
